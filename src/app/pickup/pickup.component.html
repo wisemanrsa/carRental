@@ -1,0 +1,45 @@
+<form>
+    <div class='container-fluid'>
+
+      <div class='row'>
+        <div class='well center-block'>
+          <div class='well-header'>
+            <h3 class='text-center text-success'> Process Pickup</h3>
+            <hr>
+          </div>
+
+          <div class='row'>
+              <div class='col-md-12 col-sm-12 col-xs-12'>
+                <div class='form-group'>
+                  <div class='input-group'>
+                    <div class='input-group-addon'>
+                      <i class='glyphicon glyphicon-user'></i>
+                    </div>
+                    <input type='number' placeholder='client Number' [(ngModel)]="clientNumber" name='code' class='form-control'>
+                  </div>
+                </div>
+              </div>
+            </div>	  
+
+            <div class='row'>
+              <div class='col-md-12 col-sm-12 col-xs-12'>
+                <div class='form-group'>
+                  <div class='input-group'>
+                    <div class='input-group-addon'>
+                      <i class='glyphicon glyphicon-user'></i>
+                    </div>
+                    <input type='date' placeholder='Pickup date' [(ngModel)]="date" name='code' class='form-control'>
+                  </div>
+                </div>
+              </div>
+            </div>	  
+          <div class='row widget'>
+            <div class='col-md-12 col-xs-12 col-sm-12'>
+              <button class='btn btn-warning btn-block' (click)="pickup()"> Pick up </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  

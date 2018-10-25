@@ -1,0 +1,189 @@
+
+<form >
+    <div class='container-fluid'>
+  
+    <div class="btn-group" style="left: 15%">
+					<button class="btn btn-default" (click)="setAdd()">New Car Type</button>
+					<button class="btn btn-default" (click)="setFind()">Find Car Type</button>
+			</div>
+			<div class='row' *ngIf="isFind || isUpdate" style="left: 15%; margin-top: 10px; margin-left: 170px;" >
+					<div class='col-md-4 col-sm-12 col-xs-12'>
+						<div class='form-group'>
+							<div class='input-group'>
+								<div class='input-group-addon'>
+									<i class='glyphicon glyphicon-user'></i>
+								</div>
+								<input type='text' placeholder='Car Type Code' [(ngModel)]="code"name='cartypeCode' class='form-control'>
+								<div class='row widget'>
+										<div class='col-md-12 col-xs-12 col-sm-12'>
+											<button class='btn btn-warning btn-block' (click)="search()"> Search </button>
+										</div>
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+
+
+      <div class='row' *ngIf="isAdd || isUpdate">
+        <div class='well center-block'>
+          <div class='well-header'>
+            <h3 class='text-center text-success' *ngIf="!isUpdate"> Add New Car Type! </h3>
+            <h3 class='text-center text-success' *ngIf="isUpdate"> Update Tarrif </h3>
+            <hr>
+          </div>
+  
+          <div class='row'>
+              <div class='col-md-12 col-sm-12 col-xs-12' *ngIf="!isUpdate">
+                <div class='form-group'>
+                  <div class='input-group'>
+                    <div class='input-group-addon'>
+                      <i class='glyphicon glyphicon-user'></i>
+                    </div>
+                    <input type='text' placeholder='Code' [(ngModel)]="carType.code" name='code' class='form-control' [disabled]="true">
+                    
+                  </div>
+                </div>
+              </div>
+            </div>	
+  
+          <div class='row' *ngIf="!isUpdate">
+            <div class='col-md-12 col-sm-12 col-xs-12'>
+              <div class='form-group'>
+                <div class='input-group'>
+                  <div class='input-group-addon'>
+                    <i class='glyphicon glyphicon-user'></i>
+                  </div>
+                  <input type='text' id="name" placeholder='Make' [(ngModel)]="carType.make" name='make' class='form-control'>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class='row' *ngIf="!isUpdate">
+            <div class='col-xs-12 col-sm-12 col-md-12'>
+              <div class='form-group'>
+                <div class='input-group'>
+                  <div class='input-group-addon'>
+                    <i class='glyphicon glyphicon-user'></i>
+                  </div>
+                  <input type='text' placeholder='Model' [(ngModel)]="carType.model" name='model' class='form-control'>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class='row' *ngIf="!isUpdate">
+              <div class='col-md-12 col-sm-12 col-xs-12'>
+                <div class='form-group'>
+                  <div class='input-group'>
+                    <div class='input-group-addon'>
+                      <i class='glyphicon glyphicon-user'></i>
+                    </div>
+                    <input type='number' placeholder='Engine Size' [(ngModel)]="carType.engineSize" name='engineSize' class='form-control'>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+  
+          <div class='row'>
+              <div class='col-md-12 col-sm-12 col-xs-12'>
+                <div class='form-group'>
+                  <div class='input-group'>
+                    <div class='input-group-addon'>
+                      <i class='glyphicon glyphicon-user'></i>
+                    </div>
+                    <input type='number' placeholder='Tarrif' [(ngModel)]="carType.tarrif" name='tarrif' class='form-control'>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+          <div class='row' *ngIf="!isUpdate">
+            <div class='col-md-12 col-xs-12 col-sm-12'>
+              <div class='form-group'>
+                <div class='input-group'>
+                  <div class='input-group-addon'>
+                    <i class='glyphicon glyphicon-phone'></i>
+                  </div>
+                  <select [(ngModel)]="carType.conditioner" name="conditioner">
+                    <option value="">--Does it have air conditioner?--</option>
+                    <option value="True">Yes</option>
+                    <option value="False">No</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class='row' *ngIf="!isUpdate">
+            <div class='col-md-12 col-xs-12 col-sm-12'>
+              <div class='form-group'>
+                <div class='input-group'>
+                  <div class='input-group-addon'>
+                    <i class='glyphicon glyphicon-envelope'></i>
+                  </div>
+                  <select [(ngModel)]="carType.automatic" name="automatic">
+                      <option value="">--Is it automatic?--</option>
+                      <option value="True">Yes</option>
+                      <option value="False">No</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class='row'*ngIf="!isUpdate">
+              <div class='col-md-12 col-xs-12 col-sm-12'>
+                <div class='form-group'>
+                  <div class='input-group'>
+                    <div class='input-group-addon'>
+                      <i class='glyphicon glyphicon-envelope'></i>
+                    </div>
+                    <select [(ngModel)]="carType.fuelType" name="fuelType">
+                      <option value="">--Select fuel type--</option>
+                      <option value="Petrol">Petrol</option>
+                      <option value="Diesel">Diesel</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+          <div class='row' *ngIf="!isUpdate">
+              <div class='col-md-12 col-sm-12 col-xs-12'>
+                <div class='form-group'>
+                  <div class='input-group'>
+                    <div class='input-group-addon'>
+                      <i class='glyphicon glyphicon-user'></i>
+                    </div>
+                    <select [(ngModel)]="carType.carSizeCode" name="rentalAgencyCode">
+                      <option value=''>--Select Car Size--</option>
+                      <option value='S'>Small</option>
+                      <option value='M'>Medium</option>
+                      <option value='L'>Large</option>
+                    </select>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+
+  
+          <div class='row widget'>
+            <div class='col-md-12 col-xs-12 col-sm-12'>
+              <button class='btn btn-warning btn-block' (click)="add()" *ngIf="!isUpdate"> Submit </button>
+              <button class='btn btn-warning btn-block' (click)="update()" *ngIf="isUpdate"> Update </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  </form>
+  

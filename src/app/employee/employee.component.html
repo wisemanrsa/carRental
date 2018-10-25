@@ -1,0 +1,200 @@
+
+<form>
+	<div class='container-fluid'>
+			<div class="btn-group" style="left: 15%">
+					<button class="btn btn-default" (click)="setAddEmploye()">New Employee</button>
+					<button class="btn btn-default" (click)="setFindEmployee()">Find Employee</button>
+			</div>
+			<div class='row' *ngIf="isFindEmployee || isUpdate" style="left: 15%; margin-top: 10px; margin-left: 170px;" >
+					<div class='col-md-4 col-sm-12 col-xs-12'>
+						<div class='form-group'>
+							<div class='input-group'>
+								<div class='input-group-addon'>
+									<i class='glyphicon glyphicon-user'></i>
+								</div>
+								<input type='number' placeholder='Staff Number' [(ngModel)]="staffNumber"name='staffNumber' class='form-control'>
+								<div class='row widget'>
+										<div class='col-md-12 col-xs-12 col-sm-12'>
+											<button class='btn btn-warning btn-block' (click)="search()"> Search </button>
+										</div>
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+			<div *ngIf="isSearching">
+				<h1 style="color:gray">Finding employee...Please wait</h1>
+			</div>
+
+		<div class='row' *ngIf="isAddEmployee || isUpdate">
+			<div class='well center-block'>
+				<div class='well-header'>
+					<h3 class='text-center text-success' *ngIf="isAddEmployee"> Register New Employee! </h3>
+					<h3 class='text-center text-success' *ngIf="isFindEmployee"> Update Employee! </h3>
+					<hr>
+				</div>
+
+				<div class='row'>
+						<div class='col-md-12 col-sm-12 col-xs-12'>
+							<div class='form-group'>
+								<div class='input-group'>
+									<div class='input-group-addon'>
+										<i class='glyphicon glyphicon-user'></i>
+									</div>
+									<input type='number' placeholder='Staff Number' [(ngModel)]="employee.staffNumber"name='staffNumber' class='form-control'>
+									
+								</div>
+							</div>
+						</div>
+					</div>	
+
+				<div class='row'>
+					<div class='col-md-12 col-sm-12 col-xs-12'>
+						<div class='form-group'>
+							<div class='input-group'>
+								<div class='input-group-addon'>
+									<i class='glyphicon glyphicon-user'></i>
+								</div>
+								<input type='text' id="name" placeholder='First Name' [(ngModel)]="employee.firstName" name='txtfname' class='form-control'>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class='row'>
+					<div class='col-xs-12 col-sm-12 col-md-12'>
+						<div class='form-group'>
+							<div class='input-group'>
+								<div class='input-group-addon'>
+									<i class='glyphicon glyphicon-user'></i>
+								</div>
+								<input type='text' placeholder='Surname' [(ngModel)]="employee.surname" name='txtlname' class='form-control'>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class='row'>
+						<div class='col-md-12 col-sm-12 col-xs-12'>
+							<div class='form-group'>
+								<div class='input-group'>
+									<div class='input-group-addon'>
+										<i class='glyphicon glyphicon-user'></i>
+									</div>
+									<input type='text' placeholder='Id Number' [(ngModel)]="employee.idNumber" name='txtfname' class='form-control'>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+	
+
+				<div class='row'>
+						<div class='col-md-12 col-sm-12 col-xs-12'>
+							<div class='form-group'>
+								<div class='input-group'>
+									<div class='input-group-addon'>
+										<i class='glyphicon glyphicon-user'></i>
+									</div>
+									<input type='text' placeholder='Initials' [(ngModel)]="employee.initials" name='txtfname' class='form-control'>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+
+				<div class='row'>
+					<div class='col-md-12 col-xs-12 col-sm-12'>
+						<div class='form-group'>
+							<div class='input-group'>
+								<div class='input-group-addon'>
+									<i class='glyphicon glyphicon-phone'></i>
+								</div>
+								<input type='number' minlength='10' maxlength='10' [(ngModel)]="employee.number" class='form-control' name='txtmobile' placeholder='Mobile No.'>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class='row'>
+					<div class='col-md-12 col-xs-12 col-sm-12'>
+						<div class='form-group'>
+							<div class='input-group'>
+								<div class='input-group-addon'>
+									<i class='glyphicon glyphicon-envelope'></i>
+								</div>
+								<input type='email' class='form-control' [(ngModel)]="employee.email" name='txtmail' placeholder='E-Mail'>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class='row'>
+						<div class='col-md-12 col-xs-12 col-sm-12'>
+							<div class='form-group'>
+								<div class='input-group'>
+									<div class='input-group-addon'>
+										<i class='glyphicon glyphicon-envelope'></i>
+									</div>
+									<select [(ngModel)]="employee.jobCode" name="jobCode">
+										<option value="">--Select Job--</option>
+										<option value="DO">Desk Officer</option>
+										<option value="SV">Supervisor</option>
+									</select>
+								</div>
+							</div>
+						</div>
+				</div>
+
+				<div class='row'>
+					<div class='col-md-12 col-xs-12 col-sm-12'>
+						<div class='form-group'>
+							<div class='input-group'>
+								<div class='input-group-addon'>
+									<i class='glyphicon glyphicon-list-alt'></i>
+								</div>
+								<textarea class='form-control' [(ngModel)]="employee.address" name='txtadd' placeholder='Address'></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class='row'>
+						<div class='col-md-12 col-sm-12 col-xs-12'>
+							<div class='form-group'>
+								<div class='input-group'>
+									<div class='input-group-addon'>
+										<i class='glyphicon glyphicon-lock'></i>
+									</div>
+									<input type='password'[(ngModel)]="employee.password" placeholder='Password' name='txtpass' class='form-control'>
+								</div>
+							</div>
+						</div>
+				</div>
+
+				<div class='row'>
+						<div class='col-md-12 col-xs-12 col-sm-12'>
+							<div class='form-group'>
+								<div class='input-group'>
+									<div class='input-group-addon'>
+										<i class='glyphicon glyphicon-calendar'></i>
+									</div>
+									<input type='date' name='dob' [(ngModel)]="employee.dateOfAppointment" placeholder='Date Of Appointment' class='form-control' id='datepicker'>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				<div class='row widget'>
+					<div class='col-md-12 col-xs-12 col-sm-12'>
+						<button class='btn btn-warning btn-block' (click)="save()" *ngIf="isAddEmployee"> Submit </button>
+						<button class='btn btn-warning btn-block' (click)="update()" *ngIf="isUpdate"> Update </button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</form>

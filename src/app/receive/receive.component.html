@@ -1,0 +1,76 @@
+<form >
+    <div class='container-fluid'>
+
+      <div class='row'>
+        <div class='well center-block'>
+          <div class='well-header'>
+            <h3 class='text-center text-success'>Receive</h3>
+            <hr>
+          </div>
+
+          <div class='row' *ngIf="first">
+              <div class='col-md-12 col-sm-12 col-xs-12'>
+                <div class='form-group'>
+                  <div class='input-group'>
+                    <div class='input-group-addon'>
+                      <i class='glyphicon glyphicon-user'></i>
+                    </div>
+                    <input type='number' placeholder='client Number' [(ngModel)]="clientNumber" name='code' class='form-control'>
+                  </div>
+                </div>
+              </div>
+            </div>	  
+
+
+            <div class='row' *ngIf="!first">
+              <div class='col-md-12 col-sm-12 col-xs-12'>
+                <div class='form-group'>
+                  <div class='input-group'>
+                    <div class='input-group-addon'>
+                      <i class='glyphicon glyphicon-user'></i>
+                    </div>
+                    <input type='date' placeholder='Return date' [(ngModel)]="date" name='code' class='form-control'>
+                  </div>
+                </div>
+              </div>
+            </div>	  
+
+            <div class='row' *ngIf="!first">
+              <div class='col-md-12 col-sm-12 col-xs-12'>
+                <div class='form-group'>
+                  <div class='input-group'>
+                    <div class='input-group-addon'>
+                      <i class='glyphicon glyphicon-user'></i>
+                    </div>
+                    <input type='number' placeholder='KM reading' [(ngModel)]="reading" name='code' class='form-control'>
+                  </div>
+                </div>
+              </div>
+            </div>	  
+
+            <div *ngIf="isFinal">
+                <h1 class="text text-danger">Client Invoice</h1><br><br>
+                <h6 class="text text-danger">Client Number: {{invoice.clientNumber}}</h6>
+                <h6 class="text text-danger">Car: {{invoice.carReg}}</h6>
+                <h6 class="text text-danger">Amount: {{invoice.amount}}</h6>
+                <h6 class="text text-danger">50% deposit%: {{invoice.deposit}}</h6>
+                <h6 class="text text-danger">Additional Fees: {{invoice.additionalFees ? 'Yes' : 'No'}}</h6>
+                <h6 class="text text-danger">Payments: {{invoice?.payments?.length}}</h6>
+                <p class="text text-success" *ngFor="let pp of invoice?.payments"></p>
+                
+
+            </div>
+
+
+          <div class='row widget'>
+            <div class='col-md-12 col-xs-12 col-sm-12'>
+              <button class='btn btn-warning btn-block' (click)="process()" *ngIf="first && !wait"> Next </button>
+              <button class='btn btn-warning btn-block' (click)="process2()" *ngIf="!first && !wait && !isFinal"> Next </button>
+              <button class='btn btn-warning btn-block' *ngIf="wait" [disabled]="true"> Processing please wait... </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  

@@ -1,0 +1,146 @@
+
+<form >
+    <div class='container-fluid'>
+  
+    <div class="btn-group" style="left: 15%">
+					<button class="btn btn-default" (click)="setAdd()">New Car</button>
+					<button class="btn btn-default" (click)="setFind()">Find Car</button>
+			</div>
+			<div class='row' *ngIf="isFind || isUpdate" style="left: 15%; margin-top: 10px; margin-left: 170px;" >
+					<div class='col-md-4 col-sm-12 col-xs-12'>
+						<div class='form-group'>
+							<div class='input-group'>
+								<div class='input-group-addon'>
+									<i class='glyphicon glyphicon-user'></i>
+								</div>
+								<input type='text' placeholder='Car Registration Number' [(ngModel)]="registrationNumber"name='registrationNumber' class='form-control'>
+								<div class='row widget'>
+										<div class='col-md-12 col-xs-12 col-sm-12'>
+											<button class='btn btn-warning btn-block' (click)="search()"> Search </button>
+										</div>
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+
+
+      <div class='row' *ngIf="isAdd || isUpdate">
+        <div class='well center-block'>
+          <div class='well-header'>
+            <h3 class='text-center text-success' *ngIf="!isUpdate"> Add New Car</h3>
+            <h3 class='text-center text-success' *ngIf="isUpdate"> Update Service Date </h3>
+            <hr>
+          </div>
+  
+          <div class='row'>
+              <div class='col-md-12 col-sm-12 col-xs-12' *ngIf="!isUpdate">
+                <div class='form-group'>
+                  <div class='input-group'>
+                    <div class='input-group-addon'>
+                      <i class='glyphicon glyphicon-user'></i>
+                    </div>
+                    <input type='text' placeholder='Registration Number' [(ngModel)]="car.registrationNumber" name='code' class='form-control'>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>	
+
+
+          <div class='row'>
+              <h6 *ngIf="isUpdate">Current Last service date: {{car?.lastServiceDate}}</h6>
+              <div class='col-md-12 col-sm-12 col-xs-12'>
+                <div class='form-group'>
+                  <div class='input-group'>
+                    <div class='input-group-addon'>
+                      <i class='glyphicon glyphicon-user'></i>
+                    </div>
+                    <input type='date' placeholder='Last Service Date' [(ngModel)]="car.lastServiceDate" name='code' class='form-control'>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>	
+  
+          <div class='row' *ngIf="!isUpdate">
+            <div class='col-xs-12 col-sm-12 col-md-12'>
+              <div class='form-group'>
+                <div class='input-group'>
+                  <div class='input-group-addon'>
+                    <i class='glyphicon glyphicon-user'></i>
+                  </div>
+                  <select [(ngModel)]="car.colorCode" name="color">
+                    <option value=''>--Select Color--</option>
+                    <option *ngFor="let color of colors" value="{{color.code}}">{{color.description}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class='row' *ngIf="!isUpdate">
+              <div class='col-md-12 col-sm-12 col-xs-12'>
+                <div class='form-group'>
+                  <div class='input-group'>
+                    <div class='input-group-addon'>
+                      <i class='glyphicon glyphicon-user'></i>
+                    </div>
+                    <select [(ngModel)]="car.rentalAgencyCode" name="rentalAgencyCode">
+                      <option value=''>--Select Agency--</option>
+                      <option *ngFor="let a of agencies" value="{{a.code}}">{{a.name}} {{a.city}}</option>
+                    </select>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+  
+          <div class='row' *ngIf="!isUpdate">
+              <div class='col-md-12 col-sm-12 col-xs-12'>
+                <div class='form-group'>
+                  <div class='input-group'>
+                    <div class='input-group-addon'>
+                      <i class='glyphicon glyphicon-user'></i>
+                    </div>
+                    <select [(ngModel)]="car.carTypeCode" name="CarTypeCode">
+                      <option value=''>--Select Car Type--</option>
+                      <option *ngFor="let a of carTypes" value="{{a.code}}">{{a.make}} {{a.model}} {{a.engineSize}}</option>
+                    </select>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+          <div class='row' *ngIf="!isUpdate">
+            <div class='col-md-12 col-xs-12 col-sm-12'>
+              <div class='form-group'>
+                <div class='input-group'>
+                  <div class='input-group-addon'>
+                    <i class='glyphicon glyphicon-phone'></i>
+                  </div>
+                  <select [(ngModel)]="car.available" name="available">
+                    <option value="">--Is it available?--</option>
+                    <option value="True">Available</option>
+                    <option value="False">Not Available</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class='row widget'>
+            <div class='col-md-12 col-xs-12 col-sm-12'>
+              <button class='btn btn-warning btn-block' (click)="add()" *ngIf="!isUpdate"> Submit </button>
+              <button class='btn btn-warning btn-block' (click)="update()" *ngIf="isUpdate"> Update </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  </form>
+  

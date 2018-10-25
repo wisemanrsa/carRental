@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "~ng-snotify/styles/material.css";
+
+.well
+{
+   padding: 35px;
+   padding-left: 30px;
+   box-shadow: 0 0 10px #666666;
+   margin: 0% auto 0;
+   width: 450px;
+}
+
+body
+{
+    background-color:  #dedede;
+}
+.input-group-addon
+{
+    background-color: #ffde6c;
+    color: #d17d00;
+}

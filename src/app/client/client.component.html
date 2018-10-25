@@ -1,0 +1,244 @@
+
+<form >
+    <div class='container-fluid'>
+  
+      <div class='row'>
+        <div class='well center-block'>
+          <div class='well-header'>
+            <h3 class='text-center text-success' *ngIf="!third"> Capture Client </h3>
+            <h3 class='text-center text-success' *ngIf="third"> Rent a Car </h3>
+            <h6 class='text-center text-danger' *ngIf="third"> Price: R {{tarrif}}</h6>
+            <h6 class='text-center text-danger' *ngIf="third"> First Deposit 25%: R {{firstDeposit}}</h6>
+            <hr>
+          </div>
+  
+          <div class='row' *ngIf="first">
+              <div class='col-md-12 col-sm-12 col-xs-12'>
+                <div class='form-group'>
+                  <div class='input-group'>
+                    <div class='input-group-addon'>
+                      <i class='glyphicon glyphicon-user'></i>
+                    </div>
+                    <input type='number' placeholder='Client Number' [(ngModel)]="client.clientNumber" name='code' class='form-control'>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>	
+  
+          <div class='row' *ngIf="first">
+            <div class='col-md-12 col-sm-12 col-xs-12'>
+              <div class='form-group'>
+                <div class='input-group'>
+                  <div class='input-group-addon'>
+                    <i class='glyphicon glyphicon-user'></i>
+                  </div>
+                  <input type='number' id="name" placeholder='Client ID Number' [(ngModel)]="client.idNumber" name='make' class='form-control'>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class='row' *ngIf="second">
+            <div class='col-xs-12 col-sm-12 col-md-12'>
+              <div class='form-group'>
+                <div class='input-group'>
+                  <div class='input-group-addon'>
+                    <i class='glyphicon glyphicon-user'></i>
+                  </div>
+                  <input type='text' placeholder='Surname' [(ngModel)]="client.surname" name='model' class='form-control'>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class='row' *ngIf="second">
+              <div class='col-md-12 col-sm-12 col-xs-12'>
+                <div class='form-group'>
+                  <div class='input-group'>
+                    <div class='input-group-addon'>
+                      <i class='glyphicon glyphicon-user'></i>
+                    </div>
+                    <input type='text' placeholder='Initials' [(ngModel)]="client.initials" name='engineSize' class='form-control'>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+  
+          <div class='row' *ngIf="second">
+              <div class='col-md-12 col-sm-12 col-xs-12'>
+                <div class='form-group'>
+                  <div class='input-group'>
+                    <div class='input-group-addon'>
+                      <i class='glyphicon glyphicon-user'></i>
+                    </div>
+                    <select [(ngModel)]="client.sex" name="conditioner">
+                    <option value="">--Select Gender--</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+          <div class='row' *ngIf="second">
+              <div class='col-md-12 col-sm-12 col-xs-12'>
+                <div class='form-group'>
+                  <div class='input-group'>
+                    <div class='input-group-addon'>
+                      <i class='glyphicon glyphicon-user'></i>
+                    </div>
+                    <input type='text' placeholder='Street Address' [(ngModel)]="client.street" name='code' class='form-control'>
+                    <input type='text' placeholder='Suburb' [(ngModel)]="client.suburb" name='code' class='form-control'>
+                    <input type='text' placeholder='City' [(ngModel)]="client.city" name='code' class='form-control'>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>	
+  
+          <div class='row' *ngIf="second">
+            <div class='col-md-12 col-xs-12 col-sm-12'>
+              <div class='form-group'>
+                <div class='input-group'>
+                  <div class='input-group-addon'>
+                    <i class='glyphicon glyphicon-envelope'></i>
+                  </div>
+                  <input type='number' placeholder='Phone Number' [(ngModel)]="client.phone" name='code' class='form-control'>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+        <div class='row' *ngIf="third">
+              <div class='col-md-12 col-sm-12 col-xs-12'>
+                <div class='form-group'>
+                  <div class='input-group'>
+                    <div class='input-group-addon'>
+                      <i class='glyphicon glyphicon-user'></i>
+                    </div>
+                    <select (change)="onAgencyChange()"[(ngModel)]="rentalAgencyName" name="rentalAgencyCode">
+                      <option value=''>--Select Agency--</option>
+                      <option *ngFor="let a of agencies" value="{{a}}">{{a}}</option>
+                    </select>
+                    
+                  </div>
+                </div>
+              </div>
+        </div>
+
+
+            <div class='row' *ngIf="third">
+              <div class='col-md-12 col-sm-12 col-xs-12'>
+                <div class='form-group'>
+                  <div class='input-group'>
+                    <div class='input-group-addon'>
+                      <i class='glyphicon glyphicon-user'></i>
+                    </div>
+                    <select [(ngModel)]="pickUpLoc" name="rentalAgencyCode">
+                      <option value=''>--Pick-up Location--</option>
+                      <option *ngFor="let a of pickups" value="{{a.code}}">{{a.name}} {{a.city}}</option>
+                    </select>
+                    <select [(ngModel)]="returnLoc" name="rentalAgencyCode">
+                      <option value=''>--Return Location--</option>
+                      <option *ngFor="let a of pickups" value="{{a.code}}">{{a.name}} {{a.city}}</option>
+                    </select>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class='row' *ngIf="third">
+              <div class='col-md-12 col-sm-12 col-xs-12'>
+                <div class='form-group'>
+                  <div class='input-group'>
+                    <div class='input-group-addon'>
+                      <i class='glyphicon glyphicon-user'></i>
+                    </div>
+                    From: <input type='date' placeholder='Street Address' [(ngModel)]="fromDate" name='code' class='form-control'>
+                    To: <input type='date' placeholder='Suburb' [(ngModel)]="toDate" name='code' class='form-control'>
+                  </div>
+                </div>
+              </div>
+            </div>	
+
+            <div class='row' *ngIf="third">
+              <div class='col-md-12 col-sm-12 col-xs-12'>
+                <div class='form-group'>
+                  <div class='input-group'>
+                    <div class='input-group-addon'>
+                      <i class='glyphicon glyphicon-user'></i>
+                    </div>
+                    <select (change)="onCarSizeChange()" [(ngModel)]="carSizeCode" name="rentalAgencyCode">
+                      <option value=''>--Select Car Size--</option>
+                      <option value='S'>Small</option>
+                      <option value='M'>Medium</option>
+                      <option value='L'>Large</option>
+                    </select>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class='row' *ngIf="third">
+              <div class='col-md-12 col-sm-12 col-xs-12'>
+                <div class='form-group'>
+                  <div class='input-group'>
+                    <div class='input-group-addon'>
+                      <i class='glyphicon glyphicon-user'></i>
+                    </div>
+                    <select (change)="onCarTypeChange()" [(ngModel)]="carTypeCode" name="rentalAgencyCode">
+                      <option value=''>--Select Car Type--</option>
+                      <option *ngFor="let a of carTypes" value="{{a.code}}">{{a.make}} {{a.model}} {{a.engineSize}}</option>
+                    </select>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class='row' *ngIf="third">
+              <div class='col-md-12 col-sm-12 col-xs-12'>
+                <div class='form-group'>
+                  <div class='input-group'>
+                    <div class='input-group-addon'>
+                      <i class='glyphicon glyphicon-user'></i>
+                    </div>
+                    <select [(ngModel)]="registrationNumber" name="rentalAgencyCode">
+                      <option value=''>--Available Cars--</option>
+                      <option *ngFor="let a of cars" value="{{a.registrationNumber}}">{{a.registrationNumber}}</option>
+                    </select>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          <div class='row widget'>
+            <div class='col-md-12 col-xs-12 col-sm-12'>
+              <button class='btn btn-warning btn-block' (click)="proceed()" *ngIf="first"> Proceed </button>
+              <button class='btn btn-warning btn-block' (click)="submit()" *ngIf="second"> Save Client Details </button>
+              <button class='btn btn-warning btn-block' (click)="goBack()" *ngIf="second"> Go Back </button>
+              <button class='btn btn-warning btn-block' (click)="quote()" *ngIf="third"> Accept Quote </button>
+              <button class='btn btn-warning btn-block' (click)="delete()" *ngIf="third"> Decline Quote & Remove client</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  
